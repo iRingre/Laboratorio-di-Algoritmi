@@ -1,6 +1,4 @@
 class Nodo:
-    __slots__ = ("chiave", "sx", "dx")
-
     def __init__(self, chiave):
         self.chiave = chiave
         self.sx = None
@@ -108,6 +106,7 @@ class ABR:
 if __name__ == "__main__":
     import random
 
+    t = ABR()   
     # Test rapido contro una lista ordinata di riferimento
     for _ in range(200):
         t = ABR()
@@ -127,3 +126,4 @@ if __name__ == "__main__":
             assert len(t) == len(rif)
             assert (t.search(k) is not None) == (k in rif)
     print("Tutti i test passati.")
+    print(t.inorder())
