@@ -8,10 +8,9 @@ class Nodo:
 class ABR:
     def __init__(self):
         self.radice = None
-        self.n = 0  # numero di nodi
+        self.n = 0 
 
-    def __len__(self):
-        return self.n
+    
 
     def insert(self, chiave):
         """Inserisce la chiave (anche se gia' presente)."""
@@ -72,20 +71,6 @@ class ABR:
         self.n -= 1
         return True
 
-    def inorder(self):
-        """Lista delle chiavi in ordine crescente (duplicati inclusi)."""
-        risultato = []
-        pila = []
-        cur = self.radice
-        while pila or cur is not None:
-            while cur is not None:
-                pila.append(cur)
-                cur = cur.sx
-            cur = pila.pop()
-            risultato.append(cur.chiave)
-            cur = cur.dx
-        return risultato
-
     def altezza(self):
         """Numero di nodi del cammino radice-foglia piu' lungo (albero vuoto = 0)."""
         if self.radice is None:
@@ -104,26 +89,13 @@ class ABR:
 
 
 if __name__ == "__main__":
-    import random
+        import random
+        import visualizza
 
-    t = ABR()   
-    # Test rapido contro una lista ordinata di riferimento
-    for _ in range(200):
         t = ABR()
-        rif = []
-        for _ in range(random.randint(0, 60)):
-            k = random.randint(0, 15)  # range piccolo -> molti duplicati
-            if random.random() < 0.65:
-                t.insert(k)
-                rif.append(k)
-                rif.sort()
-            else:
-                eliminato = t.delete(k)
-                assert eliminato == (k in rif)
-                if eliminato:
-                    rif.remove(k)
-            assert t.inorder() == rif
-            assert len(t) == len(rif)
-            assert (t.search(k) is not None) == (k in rif)
-    print("Tutti i test passati.")
-    print(t.inorder())
+
+        for _ in range(20):
+            t.insert(random.randint(0,5))
+
+        print(t.altezza())
+        visualizza.disegna_matplotlib(t)

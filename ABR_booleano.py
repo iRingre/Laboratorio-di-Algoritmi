@@ -1,5 +1,4 @@
 def inorder(root):
-    """Lista delle chiavi in ordine crescente (duplicati inclusi)."""
     if root is None: return
 
     inorder(root.sx)
@@ -36,7 +35,7 @@ class Node:
             else: self.dupl = False
 
     
-class ABRbool:
+class ABR:
     def __init__(self):
         self.radice = None
         self.n = 0
@@ -60,8 +59,8 @@ class ABRbool:
             elif nuovo.chiave > curn.chiave: 
                 sx_dx = False
             else:
-                curn.change()
                 sx_dx = curn.dupl
+                curn.change() #i duplicati della chiave vanno una volta a sinistra e una volta a destra
 
             if sx_dx == True:
                 curn = curn.sx
@@ -71,6 +70,10 @@ class ABRbool:
         if sx_dx == True:
             curp.sx = nuovo
         else: curp.dx = nuovo
+
+    def delete(self, chiave):
+        """Elimina un nodo con la chiave specificata."""
+        
 
     def altezza(self):
         """Numero di nodi del cammino radice-foglia piu' lungo (albero vuoto = 0)."""
@@ -92,11 +95,14 @@ class ABRbool:
 
 if __name__ == "__main__":
     import random
+    import visualizza
 
-    t = ABRbool()
+    t = ABR()
 
-    for _ in range(30):
-        t.insert(random.randint(0,5))
+    for _ in range(20):
+        t.insert(random.randint(0,10))
+        
 
     inorder(t.radice)
     print(t.altezza())
+    visualizza.disegna_matplotlib(t)
