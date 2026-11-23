@@ -80,8 +80,8 @@ def delete(self, chiave):
 
 if __name__ == "__main__":
     import random
-    import libs
-    import visualizza
+    import src.libs as libs
+    import src.visualizza as visualizza
 
     t = ABR()
 

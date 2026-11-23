@@ -27,3 +27,29 @@ Testo della consegna riscritto in forma chiara
 - generi i dati di test, in modo che esecuzioni diverse producano dati diversi;
 - esegua i test e produca i risultati;
 - contenga, in celle Markdown al suo interno, sia la documentazione del codice sia la descrizione degli esperimenti.
+
+## Ambiente virtuale `.venv`
+
+Per creare l'ambiente virtuale e installare le dipendenze, dalla cartella del progetto eseguire:
+
+```powershell
+python -m venv .venv
+```
+
+Per avviare l'ambiente virtuale su Windows con PowerShell:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+Se PowerShell impedisce l'esecuzione dello script, usare il prompt dei comandi:
+
+```bat
+.venv\Scripts\activate.bat
+```
+
+Dopo l'attivazione, installare le dipendenze con:
+
+```powershell
+python -m pip install -r requirements.txt
+```
