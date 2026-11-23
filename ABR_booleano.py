@@ -1,25 +1,3 @@
-def inorder(root):
-    if root is None: return
-
-    inorder(root.sx)
-    print(root.chiave)
-    inorder(root.dx)
-
-def preorder(root):
-    if root is None: return
-
-    print(root.chiave)
-    preorder(root.sx)
-    preorder(root.dx)
-
-def postorder(root):
-    if root is None: return
-   
-    postorder(root.sx)
-    postorder(root.dx)
-    print(root.chiave)
-
-
 
 class Node:
     def __init__(self, chiave):
@@ -75,26 +53,9 @@ class ABR:
         """Elimina un nodo con la chiave specificata."""
         
 
-    def altezza(self):
-        """Numero di nodi del cammino radice-foglia piu' lungo (albero vuoto = 0)."""
-        if self.radice is None:
-            return 0
-        massima = 0
-        pila = [(self.radice, 1)]
-        while pila:
-            nodo, livello = pila.pop()
-            if livello > massima:
-                massima = livello
-            if nodo.sx is not None:
-                pila.append((nodo.sx, livello + 1))
-            if nodo.dx is not None:
-                pila.append((nodo.dx, livello + 1))
-        return massima
-    
-        
-
 if __name__ == "__main__":
     import random
+    import libs
     import visualizza
 
     t = ABR()
@@ -103,6 +64,6 @@ if __name__ == "__main__":
         t.insert(random.randint(0,10))
         
 
-    inorder(t.radice)
-    print(t.altezza())
+    libs.inorder(t.radice)
+    print(libs.altezza(t))
     visualizza.disegna_matplotlib(t)

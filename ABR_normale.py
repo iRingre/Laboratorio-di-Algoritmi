@@ -32,13 +32,6 @@ class ABR:
                     return
                 cur = cur.dx
 
-    def search(self, chiave):
-        """Restituisce il primo nodo trovato con quella chiave, o None."""
-        cur = self.radice
-        while cur is not None and cur.chiave != chiave:
-            cur = cur.sx if chiave < cur.chiave else cur.dx
-        return cur
-
     def delete(self, chiave):
         """Elimina UNA occorrenza della chiave. Restituisce True se eliminata."""
         parent = None
@@ -71,25 +64,10 @@ class ABR:
         self.n -= 1
         return True
 
-    def altezza(self):
-        """Numero di nodi del cammino radice-foglia piu' lungo (albero vuoto = 0)."""
-        if self.radice is None:
-            return 0
-        massima = 0
-        pila = [(self.radice, 1)]
-        while pila:
-            nodo, livello = pila.pop()
-            if livello > massima:
-                massima = livello
-            if nodo.sx is not None:
-                pila.append((nodo.sx, livello + 1))
-            if nodo.dx is not None:
-                pila.append((nodo.dx, livello + 1))
-        return massima
-
 
 if __name__ == "__main__":
         import random
+        import libs
         import visualizza
 
         t = ABR()
@@ -97,5 +75,5 @@ if __name__ == "__main__":
         for _ in range(20):
             t.insert(random.randint(0,5))
 
-        print(t.altezza())
+        print(libs.altezza(t))
         visualizza.disegna_matplotlib(t)
