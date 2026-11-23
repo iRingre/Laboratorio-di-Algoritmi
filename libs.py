@@ -1,4 +1,5 @@
 def inorder(root):
+    """Stampa in ordine crescente di tutte le chiavi di un albero"""
     if root is None: return
 
     inorder(root.sx)
@@ -6,6 +7,7 @@ def inorder(root):
     inorder(root.dx)
 
 def preorder(root):
+    """Stampa in ordine anticipato di tutte le chiavi di un albero"""
     if root is None: return
 
     print(root.chiave)
@@ -13,8 +15,8 @@ def preorder(root):
     preorder(root.dx)
 
 def postorder(root):
+    """Stampa in ordine posticipato di tutte le chiavi di un albero"""
     if root is None: return
-   
     postorder(root.sx)
     postorder(root.dx)
     print(root.chiave)
@@ -29,6 +31,37 @@ def trapianta(self, u, v):
         u.p.dx = v
     if v is not None:
         v.p = u.p
+
+def minimo(x):
+    """Nodo con chiave minima nel sottoalbero di x."""
+    while x.sx is not None:
+        x = x.sx
+    return x
+
+def massimo(x):
+    """Nodo con chiave massima nel sottoalbero di x."""
+    while x.dx is not None:
+        x = x.dx
+    return x
+
+def successore(self, x):
+    if x.dx is not None:
+        return self.minimo(x.dx)
+    y = x.p
+    while y is not None and x is y.dx:
+        x = y
+        y = y.p
+    return y
+
+def predecessore(self, x):
+    if x.sx is not None:
+        return self.massimo(x.sx)
+    y = x.p
+    while y is not None and x is y.sx:
+        x = y
+        y = y.p
+    return y
+
 
 def altezza(t):
     """Numero di nodi del cammino radice-foglia piu' lungo (albero vuoto = 0)."""

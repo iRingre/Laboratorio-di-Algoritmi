@@ -3,6 +3,7 @@ class Nodo:
         self.chiave = chiave
         self.sx = None
         self.dx = None
+        self.p = None
 
 
 class ABR:
@@ -10,7 +11,6 @@ class ABR:
         self.radice = None
         self.n = 0 
 
-    
 
     def insert(self, chiave):
         """Inserisce la chiave (anche se gia' presente)."""
@@ -39,12 +39,10 @@ class ABR:
         while cur is not None and cur.chiave != chiave:
             parent = cur
             cur = cur.sx if chiave < cur.chiave else cur.dx
+
         if cur is None:
             return False
 
-        # Due figli: si copia la chiave del successore (minimo del
-        # sottoalbero destro) e si rimuove fisicamente il successore,
-        # che ha al piu' un figlio destro.
         if cur.sx is not None and cur.dx is not None:
             parent_succ = cur
             succ = cur.dx
