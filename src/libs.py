@@ -21,10 +21,10 @@ def postorder(root):
     postorder(root.dx)
     print(root.chiave)
 
-def trapianta(self, u, v):
+def trapianta(t, u, v):
     """Sostituisce il sottoalbero con radice u con quello con radice v."""
     if u.p is None:
-        self.radice = v
+        t.radice = v
     elif u is u.p.sx:
         u.p.sx = v
     else:
@@ -44,18 +44,18 @@ def massimo(x):
         x = x.dx
     return x
 
-def successore(self, x):
+def successore(x):
     if x.dx is not None:
-        return self.minimo(x.dx)
+        return minimo(x.dx)
     y = x.p
     while y is not None and x is y.dx:
         x = y
         y = y.p
     return y
 
-def predecessore(self, x):
+def predecessore(x):
     if x.sx is not None:
-        return self.massimo(x.sx)
+        return massimo(x.sx)
     y = x.p
     while y is not None and x is y.sx:
         x = y

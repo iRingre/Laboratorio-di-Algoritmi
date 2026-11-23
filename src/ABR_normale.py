@@ -65,8 +65,8 @@ class ABR:
 
 if __name__ == "__main__":
         import random
-        import src.libs as libs
-        import src.visualizza as visualizza
+        import libs
+        import visualizza
 
         t = ABR()
 

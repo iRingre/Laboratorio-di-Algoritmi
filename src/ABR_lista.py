@@ -12,7 +12,7 @@ class ABR:
         self.n = 0
 
     def insert(self, chiave):
-        """Inserisce la chiave; le occorrenze duplicate sono conservate in una lista."""
+        """Inserisce la chiave le occorrenze duplicate sono conservate in una lista."""
         nuovo = Nodo(chiave)
         self.n += 1
         if self.radice is None:
@@ -73,8 +73,8 @@ class ABR:
 
 if __name__ == "__main__":
     import random
-    import src.libs as libs
-    import src.visualizza as visualizza
+    import libs
+    import visualizza
 
     t = ABR()
 
